@@ -40,6 +40,14 @@ export function ImageUpload({
     }
   }, []);
 
+  const handleFile = (file: File) => {
+    if (file.type.startsWith('image/')) {
+      onImageSelect(file);
+    } else {
+      alert('Please select an image file');
+    }
+  };
+
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -48,22 +56,14 @@ export function ImageUpload({
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       handleFile(e.dataTransfer.files[0]);
     }
-  }, []);
+  }, [handleFile]);
 
   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       handleFile(e.target.files[0]);
     }
-  }, []);
-
-  const handleFile = (file: File) => {
-    if (file.type.startsWith('image/')) {
-      onImageSelect(file);
-    } else {
-      alert('Please select an image file');
-    }
-  };
+  }, [handleFile]);
 
   const handleRemove = () => {
     onImageRemove();

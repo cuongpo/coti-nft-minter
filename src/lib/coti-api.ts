@@ -20,14 +20,14 @@ interface MCPRequest {
   jsonrpc: string;
   id: number;
   method: string;
-  params: any;
+  params: Record<string, unknown>;
 }
 
 interface MCPResponse {
   jsonrpc: string;
   id: number;
-  result?: any;
-  error?: any;
+  result?: Record<string, unknown>;
+  error?: Record<string, unknown>;
 }
 
 // Function to test COTI API connection
@@ -107,6 +107,7 @@ export async function testCOTIConnection(): Promise<ConnectionTestResponse> {
 }
 
 // Function to initialize a new MCP session
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function initializeMCPSession(): Promise<string | null> {
   try {
     const config = process.env.NEXT_PUBLIC_COTI_MCP_CONFIG!;
@@ -185,7 +186,7 @@ export async function mintNFTOnCOTI(params: MintNFTParams): Promise<MintNFTRespo
   // COTI MCP API configuration from environment variables
   const config = process.env.NEXT_PUBLIC_COTI_MCP_CONFIG!;
   const apiKey = process.env.NEXT_PUBLIC_COTI_MCP_API_KEY!;
-  let sessionId = process.env.NEXT_PUBLIC_COTI_MCP_SESSION_ID!;
+  const sessionId = process.env.NEXT_PUBLIC_COTI_MCP_SESSION_ID!;
 
   // Construct the full endpoint with query parameters
   const endpoint = `${baseEndpoint}?config=${config}&api_key=${apiKey}`;

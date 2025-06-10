@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { FileText, Plus, X } from 'lucide-react';
 
 export interface NFTMetadata {

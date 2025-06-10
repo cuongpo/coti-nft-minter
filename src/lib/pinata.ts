@@ -46,7 +46,7 @@ export async function uploadImageToPinata(file: File): Promise<IPFSUploadResult>
   }
 }
 
-export async function uploadMetadataToPinata(metadata: any): Promise<IPFSUploadResult> {
+export async function uploadMetadataToPinata(metadata: Record<string, unknown>): Promise<IPFSUploadResult> {
   try {
     const data = {
       pinataContent: metadata,

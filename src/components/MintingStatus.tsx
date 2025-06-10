@@ -53,7 +53,7 @@ export function MintingStatus({ steps, transactionHash, tokenId, onReset }: Mint
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Minting Progress</h3>
       
       <div className="space-y-4">
-        {steps.map((step, index) => (
+        {steps.map((step) => (
           <div key={step.id} className="flex items-start gap-3">
             <div className="flex-shrink-0 mt-0.5">
               {getStepIcon(step.status)}

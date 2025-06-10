@@ -45,7 +45,7 @@ export interface ConnectionTestResponse {
 // Create MCP client for COTI using official Smithery SDK
 class COTIMCPClient {
   private client: Client | null = null;
-  private config: any;
+  private config: Record<string, unknown>;
   private apiKey: string;
 
   constructor() {
@@ -98,7 +98,7 @@ class COTIMCPClient {
     }
   }
 
-  async callTool(toolName: string, args: any): Promise<any> {
+  async callTool(toolName: string, args: Record<string, unknown>): Promise<unknown> {
     try {
       const client = await this.getClient();
 
